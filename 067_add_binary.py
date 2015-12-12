@@ -10,12 +10,15 @@ class Solution(object):
 
         m = len(a)
         n = len(b)
+        # Complete the remaining bit of b
+        # Set the length of a equal with b's
         blist = []
         for i in range(n):
             blist.append(b[i])
         for j in range(m-n):
             blist.insert(0, '0')
         b = ''.join(blist)
+        #
         carry = 0
         result = []
 
@@ -30,3 +33,6 @@ class Solution(object):
 
         result = ''.join(result)
         return result
+
+s = Solution()
+print s.addBinary("11", "1")
