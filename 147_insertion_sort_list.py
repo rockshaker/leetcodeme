@@ -12,26 +12,26 @@ class Solution(object):
         """
         if not head or not head.next:
             return head
-        previous = head
-        current = head.next
-        while not current.next:
-            if current.val > previous.val:
-                previous = current
-                current = current.next
-                continue
-            tmp = current.next
-            previous.next = current.next
-            if current.val < head.val:
-                current.next = head
-                head = current
-                continue
-            pos_prev = head
-            pos = head.next
-            while pos.next != tmp:
-                if pos.val > current.val:
-                    pos_prev.next = current
-                    current.next = pos.next
-                pos_prev = pos
-                pos = pos.next
 
+        previous = head
+        while previous.next:
+            current = previous.next
+            if current.val >= previous.val:
+                previous = previous.next
+                continue
+            previous.next = current.next
+            tmp = current.next
+            pos_prev = head
+            while pos_prev != tmp:
+                if current.val < head.val:
+                    current.next = head
+                    head = current
+                    break
+                else:
+                    pos = pos_prev.next
+                    if current.val < pos.val:
+                        current.next = pos
+                        pos_prev.next = current
+                        break
+                    pos_prev = pos_prev.next
         return head
