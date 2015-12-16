@@ -10,6 +10,6 @@ class Solution(object):
 
         for i in range(2, n+1):
             for j in range(1, i+1):
-                num[i] = num[j-1] * num[i-j]
+                num[i] += num[j-1] * num[i-j]
 
         return num[n]
